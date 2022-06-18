@@ -1,0 +1,147 @@
+\documentclass[sigconf,nonacm, 11pt]{acmart}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{tabularx}
+\usepackage{mathtools}
+
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\begin{document}
+
+\title{Semi-automatic evaluation of German party manifestos}
+
+\author{Tobias Kalmbach}
+\affiliation{%
+  \institution{University of Ulm}
+  \streetaddress{Helmholtzstraße 16}
+  \postcode{89081}
+  \city{Ulm}
+  \state{Baden-Württemberg}
+  \country{GER}
+}
+\email{tobias.kalmbach@uni-ulm.de}
+
+\author{Fabian Karl}
+\affiliation{%
+  \institution{University of Ulm}
+  \streetaddress{Helmholtzstraße 16}
+  \postcode{89081}
+  \city{Ulm}
+  \state{Baden-Württemberg}
+  \country{GER}
+}
+\email{fabian.karl@uni-ulm.de}
+
+\author{Tim Knittel}
+\affiliation{%
+  \institution{University of Ulm}
+  \streetaddress{Helmholtzstraße 16}
+  \postcode{89081}
+  \city{Ulm}
+  \state{Baden-Württemberg}
+  \country{GER}
+}
+\email{tim.knittel@uni-ulm.de}
+
+\author{Nicolas Zellner}
+\affiliation{%
+  \institution{University of Ulm}
+  \streetaddress{Helmholtzstraße 16}
+  \postcode{89081}
+  \city{Ulm}
+  \state{Baden-Württemberg}
+  \country{GER}
+}
+\email{nicolas.zellner@uni-ulm.de}
+
+\renewcommand{\shortauthors}{T.Kalmbach, F.Karl, T.Knittel, N.Zellner}
+
+\begin{abstract}
+    % Vergleich verschiedene topic clustering methoden
+    % errichten pipline für semi-automatische ausertung 
+    % bieten ein tool als webinterface an
+    The ability to automatically extract a set of relevant and unique topics from large text corpora has a wide range of applications. In our work, we look at the domain of political texts using the example of party programs for the German federal elections in 2021. To determine the best possible result for our specific use case, we compare a number of topic clustering approaches. 
+    Based on this knowledge, we implement a pipeline for the semi-automatic evaluation of party programs and even offer a tool for this in the form of a web interface\footnote{\url{https://tadl.kalmbach.dev}}, so that information can be transferred  to the voters on the basis of this evaluation.
+\end{abstract}
+
+
+\keywords{NLP, LDA, HDP, BERT, Politics, Social Science, Topic Mining, Text Embedding, Text Classification}
+
+
+
+\maketitle
+
+
+% include sections
+
+\input{chapters/goal}
+
+\input{chapters/introduction}
+
+\input{chapters/related-works}
+
+\input{chapters/models}
+
+\input{chapters/implementation}
+
+\input{chapters/conclusion}
+
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\appendix
+
+\section{Distribution of work}
+Generally, we tried to work in groups, so the following is an approximation, of which authors are mainly responsible for the corresponding sections. The distribution of our programming work can be found in the README of our GitLab project.
+
+\begin{tabularx}{\linewidth}{X|X}
+\textbf{Part}                                  & \textbf{Responsible author(s)} \\ \hline
+Abstract                                       & Fabian Karl                    \\
+1 Introduction                                 & Fabian Karl \& Tim Knittel     \\
+2 Related Works                                & Nicolas Zellner                \\
+3.1 Latent Dirichlet Allocation Model          & Tobias Kalmbach \& Fabian Karl \\
+3.2 Mathematical Basis                         & Nicolas Zellner                \\
+3.3 Hierarchical Dirichlet Process Model       & Nicolas Zellner                \\
+3.4 BERT model                                 & Tim Knittel                    \\
+4.1 Data Preparation                           & Tobias Kalmbach                \\
+4.2.1 LDA for topic modeling                   & Tobias Kalmbach                \\
+4.2.2  HDP                                     & Nicolas Zellner \& Tim Knittel \\
+4.2.3 Topic classification on BERT embedding   & Fabian Karl                    \\
+4.2.4  Summary of topics                       & Tobias Kalmbach                \\
+4.3.1  LDA for topic modeling.                 & Fabian Karl                    \\
+4.3.2  Topic classification on BERT embedding  & Tim Knittel                    \\
+4.4 Discussion                                 & Fabian Karl                    \\
+4.5  Web Interface                             & Tobias Kalmbach                \\
+5 Conclusions and future work                  & Fabian Karl                   
+\end{tabularx}
+
+\section{Larger images}
+
+\begin{figure}[h]
+        \centering 
+        \includegraphics [height=0.7\linewidth, angle=90]{resources/NextSentence.png} \\
+        \caption{\citet{Devlin2019BERTPO}}
+        \label{fig:next_sentence_large}
+    \end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=0.7\linewidth, angle=90]{resources/graph_SPD.png}
+    \caption{Word frequencies for the 50 most used words by the SPD in their 2021 federal election manifesto}
+    \label{fig:spd_stats_large}
+\end{figure}
+\clearpage
+\begin{figure}[h]
+    \centering
+    \includegraphics [height=\linewidth, angle=90]{resources/fdp_cluster.png}
+    \caption{LDA visualization at the example of the FDP}
+    \label{fig:lda_cluster_large}
+\end{figure}
+
+\end{document}
